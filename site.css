@@ -1,0 +1,87 @@
+/* KaviNote site — Quiet Stage design system */
+:root {
+  --paper: #FAF8F3; --ink: #1C2321; --river: #2E6E65; --mist: #DCE4E0;
+  --slate: #0E1116; --chalk: #EDEFF2; --signal: #5BD6A9; --ember: #E8A87C;
+  --serif: Georgia, 'Times New Roman', serif;
+  --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+* { margin: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.65; font-size: 16.5px; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+a { color: var(--river); }
+
+/* Nav */
+nav.site { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; }
+.mark { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 19px; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
+.navlinks { display: flex; align-items: center; gap: 26px; }
+.navlinks a { color: var(--ink); opacity: .65; text-decoration: none; font-size: 15px; }
+.navlinks a:hover { opacity: 1; }
+.btn { display: inline-block; background: var(--river); color: #fff !important; text-decoration: none; padding: 12px 24px; border-radius: 12px; font-weight: 500; font-size: 15.5px; border: none; cursor: pointer; transition: transform .12s ease; }
+.btn:active { transform: scale(.98); }
+.btn.ghost { background: transparent; color: var(--river) !important; border: 1.5px solid var(--river); }
+.btn.onDark { background: var(--signal); color: var(--slate) !important; }
+
+/* Type */
+h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(36px, 5.2vw, 58px); line-height: 1.12; letter-spacing: -0.015em; }
+h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.2; }
+h3 { font-size: 17px; font-weight: 600; }
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--river); }
+.sub { font-size: 19px; opacity: .72; }
+.meta { font-family: var(--mono); font-size: 12.5px; opacity: .55; }
+
+/* Sections */
+section { padding: 72px 0; }
+.card { background: #fff; border: 1px solid var(--mist); border-radius: 16px; padding: 26px; }
+.grid { display: grid; gap: 18px; }
+.dark { background: var(--slate); color: var(--chalk); }
+.dark h2, .dark h3 { color: var(--chalk); }
+.dark .sub { opacity: .68; }
+
+/* Phone frame */
+.phone { width: 300px; border-radius: 40px; border: 9px solid #16181c; background: var(--slate); overflow: hidden; box-sizing: content-box; }
+.phone .screen { height: 560px; position: relative; padding: 20px 18px; }
+
+/* Pills, badges */
+.pill { display: inline-block; font-family: var(--mono); font-size: 12px; padding: 5px 13px; border-radius: 999px; border: 1px solid var(--mist); background: #fff; }
+.dark .pill { background: rgba(237,239,242,.06); border-color: rgba(237,239,242,.18); color: var(--chalk); }
+.badge-appstore { display: inline-flex; align-items: center; gap: 10px; background: #000; color: #fff !important; text-decoration: none; padding: 10px 20px 10px 16px; border-radius: 12px; line-height: 1.15; }
+.badge-appstore small { display: block; font-size: 10.5px; opacity: .8; }
+.badge-appstore span { font-size: 17px; font-weight: 500; }
+
+/* FAQ */
+details { border-bottom: 1px solid var(--mist); padding: 16px 4px; }
+details summary { cursor: pointer; font-weight: 500; font-size: 16.5px; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+details summary::after { content: '+'; font-size: 20px; opacity: .45; }
+details[open] summary::after { content: '–'; }
+details p { padding: 10px 0 4px; opacity: .78; font-size: 15.5px; }
+
+/* Footer */
+footer.site { border-top: 1px solid var(--mist); padding: 44px 0 56px; margin-top: 40px; }
+footer.site .cols { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 28px; }
+footer.site a { color: var(--ink); opacity: .65; text-decoration: none; display: block; margin: 6px 0; font-size: 14.5px; }
+footer.site a:hover { opacity: 1; }
+footer.site .head { font-family: var(--mono); font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; opacity: .5; margin-bottom: 8px; }
+
+/* Article pages (privacy, terms, help) */
+.article { max-width: 760px; margin: 0 auto; padding: 24px 24px 80px; }
+.article h1 { font-size: clamp(30px, 4vw, 42px); margin: 26px 0 6px; }
+.article h2 { font-size: 21px; font-family: var(--sans); font-weight: 600; margin: 34px 0 10px; }
+.article p, .article li { opacity: .85; }
+.article ul { padding-left: 22px; }
+.callout { background: #fff; border: 1px solid var(--mist); border-radius: 16px; padding: 20px 24px; margin: 22px 0; }
+
+/* Reveal on scroll */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+}
+
+@media (max-width: 860px) {
+  .navlinks a.hideMobile { display: none; }
+  section { padding: 52px 0; }
+  footer.site .cols { grid-template-columns: 1fr; }
+}

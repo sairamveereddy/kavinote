@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="KaviNote Help Center - Get started with Meeting Mode, improve matching accuracy, learn Capture, manage subscriptions, and troubleshoot. Support by Kavivas Tech.">
+<meta name="keywords" content="KaviNote help, meeting mode guide, voice recognition help, interview prep support">
+<meta name="author" content="Kavivas Tech Pvt Ltd">
+<meta name="robots" content="index, follow">
+<meta name="canonical" href="https://kavinote.app/help.html">
+<title>Help Center — KaviNote | Kavivas Tech</title>
+<style>
+/* KaviNote site — Quiet Stage design system */
+:root {
+  --paper: #FAF8F3; --ink: #1C2321; --river: #2E6E65; --mist: #DCE4E0;
+  --slate: #0E1116; --chalk: #EDEFF2; --signal: #5BD6A9; --ember: #E8A87C;
+  --serif: Georgia, 'Times New Roman', serif;
+  --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+* { margin: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.65; font-size: 16.5px; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+a { color: var(--river); text-decoration: none; }
+a:hover { opacity: .8; }
+
+/* Nav (mobile-first) */
+header.site { position: sticky; top: 0; z-index: 100; background: rgba(250,248,243,.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--mist); }
+.navbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 0; }
+.mark { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 19px; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; white-space: nowrap; }
+.mark img { width: 46px; height: 46px; border-radius: 12px; display: block; }
+.hamburger { width: 46px; height: 46px; border: 1.5px solid var(--mist); background: #fff; border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0; flex-shrink: 0; }
+.hamburger svg { width: 22px; height: 22px; }
+.menu { display: none; flex-direction: column; padding: 4px 0 20px; width: 100%; order: 3; }
+.menu.open { display: flex; }
+.menu a.navlink { padding: 14px 4px; font-size: 17px; font-weight: 500; color: var(--ink); border-bottom: 1px solid var(--mist); }
+.menu-actions { display: grid; gap: 10px; margin-top: 18px; }
+footer.site a.mark { display: flex; opacity: 1; font-size: 19px; }
+@media (min-width: 920px) {
+  .navbar { padding: 12px 0; }
+  .hamburger { display: none; }
+  .menu { display: flex !important; flex-direction: row; align-items: center; gap: 26px; padding: 0; width: auto; order: 0; }
+  .menu a.navlink { border: none; padding: 0; font-size: 15px; opacity: .75; }
+  .menu a.navlink:hover { opacity: 1; }
+  .menu-actions { display: flex; margin: 0; gap: 12px; }
+}
+.btn { display: inline-block; background: var(--river); color: #fff !important; text-decoration: none; padding: 12px 24px; border-radius: 12px; font-weight: 500; font-size: 15.5px; border: none; cursor: pointer; transition: all .2s ease; box-shadow: 0 2px 8px rgba(46,110,101,.12); }
+.btn:hover { box-shadow: 0 6px 16px rgba(46,110,101,.18); transform: translateY(-2px); }
+.btn:active { transform: scale(.98); }
+.btn.ghost { background: transparent; color: var(--river) !important; border: 1.5px solid var(--river); box-shadow: none; }
+
+/* Type */
+h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(40px, 5.5vw, 64px); line-height: 1.1; letter-spacing: -0.02em; }
+h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(28px, 4vw, 42px); line-height: 1.2; }
+h3 { font-size: 18px; font-weight: 600; }
+.meta { font-family: var(--mono); font-size: 13px; opacity: .55; letter-spacing: .05em; }
+
+/* Article pages */
+.article { max-width: 760px; margin: 0 auto; padding: 32px 24px 80px; }
+.article h1 { font-size: clamp(32px, 4.5vw, 48px); margin: 28px 0 8px; font-family: var(--serif); font-weight: 500; letter-spacing: -0.01em; }
+.article h2 { font-size: 24px; font-family: var(--serif); font-weight: 500; margin: 40px 0 16px; color: var(--river); }
+.article h3 { font-size: 18px; font-weight: 600; margin: 28px 0 12px; }
+.article p, .article li { opacity: .8; line-height: 1.75; }
+.article ul, .article ol { padding-left: 24px; }
+.article li { margin-bottom: 8px; }
+
+.section-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin: 40px 0; }
+.help-card { background: #fff; border: 1px solid var(--mist); border-radius: 16px; padding: 28px; transition: all .2s; box-shadow: 0 1px 3px rgba(28,35,33,.08); }
+.help-card:hover { box-shadow: 0 6px 16px rgba(28,35,33,.12); transform: translateY(-4px); }
+.help-card h3 { margin-top: 0; color: var(--river); }
+
+details { border-bottom: 1px solid var(--mist); padding: 18px 0; cursor: pointer; }
+details summary { font-weight: 500; font-size: 16px; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+details summary:hover { color: var(--river); }
+details summary::after { content: '+'; font-size: 22px; opacity: .35; transition: all .2s; }
+details[open] summary::after { content: '−'; opacity: .6; }
+details p { padding: 14px 0 0; opacity: .78; font-size: 15px; }
+
+.callout { background: linear-gradient(135deg, rgba(46,110,101,.08), rgba(46,110,101,.03)); border: 1.5px solid var(--river); border-radius: 16px; padding: 24px; margin: 28px 0; }
+.callout strong { color: var(--river); }
+
+/* Footer */
+footer.site { border-top: 1px solid var(--mist); padding: 48px 0 56px; margin-top: 60px; }
+footer.site .cols { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 32px; }
+footer.site a { color: var(--ink); opacity: .65; text-decoration: none; display: block; margin: 6px 0; font-size: 14.5px; transition: opacity .2s; }
+footer.site a:hover { opacity: 1; }
+footer.site .head { font-family: var(--mono); font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; opacity: .5; margin-bottom: 12px; }
+
+@media (max-width: 860px) {
+  .navlinks a.hideMobile { display: none; }
+  .section-grid { grid-template-columns: 1fr; }
+  footer.site .cols { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .wrap { padding: 0 16px; }
+}
+</style>
+</head>
+<body>
+<header class="site">
+<div class="wrap">
+<div class="navbar">
+  <a class="mark" href="index.html">
+    <img src="logo.png" alt="KaviNote lotus logo" width="46" height="46">
+    KaviNote
+  </a>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false" id="hamburgerBtn">
+    <svg id="iconOpen" viewBox="0 0 24 24" fill="none" stroke="#1C2321" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    <svg id="iconClose" viewBox="0 0 24 24" fill="none" stroke="#1C2321" stroke-width="2" stroke-linecap="round" style="display:none;"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <nav class="menu" id="menu">
+    <a class="navlink" href="index.html#how">How it works</a>
+    <a class="navlink" href="index.html#features">Features</a>
+    <a class="navlink" href="index.html#pricing">Pricing</a>
+    <a class="navlink" href="help.html">Help</a>
+    <a class="navlink" href="support.html">Support</a>
+    <div class="menu-actions">
+      <a class="btn" href="index.html#download">Get the app</a>
+    </div>
+  </nav>
+</div>
+</div>
+</header>
+
+<div class="article">
+<h1>Help Center</h1>
+<p class="meta" style="margin-bottom:32px;">Everything you need to know about KaviNote</p>
+
+<h2>Getting started</h2>
+<details>
+  <summary>How do I prepare a note for Meeting Mode?</summary>
+  <p>Open KaviNote, tap "New Professional Note" (or switch to Professional mode), and paste or type your Q&A content. You can paste up to 160+ questions and answers at once — the app doesn't have practical limits. Alternatively, upload a PDF or text file, or start with one of the starter library packs and personalize it. The more your note text resembles how people actually ask questions, the better the matching will be.</p>
+</details>
+
+<details>
+  <summary>Do I need to format my notes in a specific way?</summary>
+  <p>No specific format required, but the matching works best when questions and answers are clearly separated. If you paste a document, the app understands natural Q&A sections. If you're getting poor matches, try rephrasing your note questions to use everyday vocabulary — if an interviewer asks "How do you handle high concurrency?" and your note says "Explain thread safety," the semantic matching may miss it.</p>
+</details>
+
+<details>
+  <summary>How do I turn on Meeting Mode?</summary>
+  <p>Tap the mode toggle pill at the top-right of your screen to switch from Personal (light) to Professional (dark, Meeting Mode). The app will ask for microphone permission on first use — grant both "Microphone" and "Speech Recognition" permissions. Then tap the microphone icon to start listening.</p>
+</details>
+
+<h2>Accuracy & matching</h2>
+<details>
+  <summary>Why didn't it scroll to the right answer?</summary>
+  <p>A few common reasons: (1) the question was phrased very differently from your note's questions — try rephrasing your notes to match common interview language; (2) the microphone didn't pick up the question clearly — repeat it or speak louder; (3) the match score was borderline — weaker matches appear as orange chips instead of auto-scrolling. Check the "Questions, answered" section on the home page for accuracy tips.</p>
+</details>
+
+<details>
+  <summary>What does the orange chip mean?</summary>
+  <p>An orange chip means KaviNote found a potential match but wasn't confident enough to auto-scroll. Tap the chip to jump to that answer. If this happens often, it usually means your note questions don't quite match the vocabulary people are using — updating your note phrasing can help.</p>
+</details>
+
+<details>
+  <summary>How accurate is the speech recognition?</summary>
+  <p>On-device Apple speech recognition is very accurate for clear, single-voice audio at normal speaking volumes. It works best in quiet environments. In noisy rooms or with multiple speakers, accuracy drops — the app still tries to match, but you may need to tap suggestions instead of relying on auto-scroll.</p>
+</details>
+
+<h2>Capture & dictation</h2>
+<details>
+  <summary>How long can I record in Capture?</summary>
+  <p>You can record continuously for as long as your battery lasts. The transcript survives session restarts — if you pause briefly (even 55 seconds), the transcript keeps growing. Just tap "Save" when you're done, and the note goes into your "Captured notes" notebook.</p>
+</details>
+
+<details>
+  <summary>Can I edit a Capture note after saving?</summary>
+  <p>Yes. Tap on the saved note in "Captured notes" to open it, then tap the edit icon to refine the transcript (fix transcription errors, add or remove text). Your edits are saved automatically.</p>
+</details>
+
+<details>
+  <summary>Can I search my Capture notes by voice?</summary>
+  <p>Yes. From the Home screen, tap the Hearing button (outlined microphone icon) and speak — KaviNote will search your Personal notes and Captured notes for matches. "I recorded a lecture on photosynthesis" will find your Capture note about that topic.</p>
+</details>
+
+<h2>Limits & subscriptions</h2>
+<details>
+  <summary>What are the free tier limits?</summary>
+  <p>Free plan includes: unlimited Personal notes, 1 editable Professional note, 3 library packs, 30 minutes of listening per day, and 100 matched questions per week. You can use Capture, teleprompter, and voice search anytime. Pro ($6.99/month or $49/year) removes all limits and adds Pro teleprompter controls.</p>
+</details>
+
+<details>
+  <summary>When do my listening minutes reset?</summary>
+  <p>Every 24 hours from midnight your time zone. The app tracks this locally — no accounts needed. If you upgrade to Pro, the meter disappears entirely.</p>
+</details>
+
+<details>
+  <summary>Can I use the same subscription on multiple devices?</summary>
+  <p>Yes, if you use the same Apple ID across devices. Your subscription is tied to your Apple ID, so signing in with the same ID on your iPhone and iPad shares the Pro benefits.</p>
+</details>
+
+<h2>Permissions & privacy</h2>
+<details>
+  <summary>Why does KaviNote ask for microphone permission?</summary>
+  <p>To listen during calls and record Capture notes. The permission request is standard for any app that uses your mic. KaviNote doesn't record audio to disk — it transcribes in real time and discards the raw audio immediately.</p>
+</details>
+
+<details>
+  <summary>Does KaviNote send my notes or audio anywhere?</summary>
+  <p>No. Everything runs on your device. Your notes stay in local storage (or your private iCloud if you enable iCloud sync). Audio is processed by Apple's on-device speech recognizer and never sent to servers. Check the privacy policy for full details.</p>
+</details>
+
+<h2>Troubleshooting</h2>
+<details>
+  <summary>The mic isn't working or showing no transcript.</summary>
+  <p>Check: (1) did you grant mic + speech recognition permissions? Tap Settings → KaviNote → Microphone & Speech Recognition, ensure both are "Allow"; (2) is another app using the mic? KaviNote can't listen if another app has exclusive mic access; (3) try restarting the app. If none of that works, contact support.</p>
+</details>
+
+<details>
+  <summary>The Flowline animation isn't moving.</summary>
+  <p>This happens if: (1) motion is disabled in Accessibility settings — go to Settings → Accessibility → Motion, toggle "Reduce Motion" off to see animations; (2) a recognizer session hasn't started yet — tap the mic to kick off listening. The Flowline ripples when audio is flowing into the recognizer.</p>
+</details>
+
+<details>
+  <summary>Professional Mode is too dark or hard to read.</summary>
+  <p>Increase your phone's brightness, or tap the mode toggle to try Personal Mode (lighter, easier on the eyes, but without auto-matching). If it's really hard to see at a distance, use the bigger font notes tip: shorten your note questions and make them bold so they stand out more when displayed.</p>
+</details>
+
+<p style="margin-top:40px; padding-top:24px; border-top:1px solid var(--mist);"><strong>Still have questions?</strong> <a href="support.html">Contact support</a> or email us at support@kavinote.app.</p>
+</div>
+
+<div class="wrap">
+<footer class="site">
+  <div class="cols">
+    <div>
+      <a class="mark" href="index.html" style="margin-bottom:14px;">
+        <img src="logo.png" alt="KaviNote lotus logo" width="40" height="40" style="width:40px; height:40px;">
+        KaviNote
+      </a>
+      <p style="font-size:14px; opacity:.6; max-width:32ch; line-height:1.6;">Notes that move with your voice. On-device, private, yours.</p>
+      <p style="font-size:13px; opacity:.45; margin-top:16px;">Built by <strong>Kavivas Tech Pvt Ltd</strong>, India</p>
+      <p style="font-size:12px; opacity:.35; margin-top:8px;">© 2026 KaviNote. All rights reserved.</p>
+    </div>
+    <div>
+      <div class="head">Product</div>
+      <a href="index.html#features">Features</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="#">Help center</a>
+      <a href="support.html">Support</a>
+    </div>
+    <div>
+      <div class="head">Legal</div>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </div>
+  </div>
+</footer>
+</div>
+<script>
+function toggleMenu() {
+  var menu = document.getElementById('menu');
+  var open = menu.classList.toggle('open');
+  document.getElementById('iconOpen').style.display = open ? 'none' : 'block';
+  document.getElementById('iconClose').style.display = open ? 'block' : 'none';
+  document.getElementById('hamburgerBtn').setAttribute('aria-expanded', open);
+}
+</script>
+</body>
+</html>

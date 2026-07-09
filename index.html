@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FAF8F3">
+<meta name="description" content="KaviNote - Your on-device meeting & interview copilot. Listen to questions, find answers in your notes, read with confidence. 100% on-device, no accounts, no data collected. Built by Kavivas Tech.">
+<meta name="keywords" content="meeting copilot, interview prep, voice recognition, on-device AI, meeting notes, presentation tool">
+<meta name="author" content="Kavivas Tech Pvt Ltd">
+<meta name="robots" content="index, follow">
+<meta name="canonical" href="https://kavinote.app/">
+<meta property="og:title" content="KaviNote — Your On-Device Meeting & Interview Copilot">
+<meta property="og:description" content="Listen to questions. Find your prepared answers. Read with confidence. 100% on-device privacy.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kavinote.app/">
+<link rel="icon" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
+<title>KaviNote — On-Device Meeting & Interview Copilot | Kavivas Tech</title>
+<style>
+/* KaviNote site — Quiet Stage design system (mobile-first) */
+:root {
+  --paper: #FAF8F3; --ink: #1C2321; --river: #2E6E65; --mist: #DCE4E0;
+  --slate: #0E1116; --chalk: #EDEFF2; --signal: #5BD6A9; --ember: #E8A87C;
+  --serif: Georgia, 'Times New Roman', serif;
+  --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+* { margin: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.65; font-size: 16px; padding-bottom: 84px; }
+img { max-width: 100%; }
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+a { color: var(--river); text-decoration: none; }
+a:hover { opacity: .85; }
+
+/* ============ Header (mobile-first) ============ */
+header.site { position: sticky; top: 0; z-index: 100; background: rgba(250,248,243,.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--mist); }
+.navbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 0; }
+.mark { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 19px; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; white-space: nowrap; }
+.mark img { width: 46px; height: 46px; border-radius: 12px; display: block; }
+.hamburger { width: 46px; height: 46px; border: 1.5px solid var(--mist); background: #fff; border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0; flex-shrink: 0; }
+.hamburger svg { width: 22px; height: 22px; }
+.menu { display: none; flex-direction: column; padding: 4px 0 20px; width: 100%; order: 3; }
+.menu.open { display: flex; }
+.menu a.navlink { padding: 14px 4px; font-size: 17px; font-weight: 500; color: var(--ink); border-bottom: 1px solid var(--mist); }
+.menu-actions { display: grid; gap: 10px; margin-top: 18px; }
+
+/* ============ Buttons (thumb-friendly) ============ */
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 50px; background: var(--river); color: #fff !important; text-decoration: none; padding: 12px 26px; border-radius: 14px; font-weight: 600; font-size: 16px; border: none; cursor: pointer; transition: all .2s ease; box-shadow: 0 4px 12px rgba(46,110,101,.15); font-family: var(--sans); }
+.btn:hover { box-shadow: 0 8px 24px rgba(46,110,101,.25); transform: translateY(-2px); }
+.btn:active { transform: scale(.98); }
+.btn.ghost { background: transparent; color: var(--river) !important; border: 2px solid var(--river); box-shadow: none; }
+.btn.block { width: 100%; }
+
+.badge-appstore { display: flex; align-items: center; justify-content: center; gap: 12px; background: #000; color: #fff !important; text-decoration: none; padding: 12px 24px; border-radius: 14px; line-height: 1.15; transition: all .2s; box-shadow: 0 6px 16px rgba(0,0,0,.18); font-weight: 500; min-height: 54px; }
+.badge-appstore:hover { transform: scale(1.03); box-shadow: 0 10px 28px rgba(0,0,0,.25); }
+.badge-appstore small { display: block; font-size: 11px; opacity: .85; font-weight: 400; }
+.badge-appstore span { font-size: 18px; font-weight: 600; }
+
+/* ============ Typography ============ */
+h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(34px, 9vw, 64px); line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); }
+h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(26px, 6.5vw, 44px); line-height: 1.18; letter-spacing: -0.015em; }
+h3 { font-size: 18px; font-weight: 600; line-height: 1.4; }
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--river); display: inline-block; padding: 7px 14px; background: rgba(46,110,101,.08); border-radius: 8px; margin-bottom: 14px; font-weight: 600; }
+.sub { font-size: 17px; opacity: .78; line-height: 1.7; }
+.meta { font-family: var(--mono); font-size: 12.5px; opacity: .55; letter-spacing: .08em; }
+
+/* ============ Sections & cards ============ */
+section { padding: 56px 0; position: relative; }
+.card { background: #fff; border: 1px solid var(--mist); border-radius: 18px; padding: 26px 22px; transition: all .3s; box-shadow: 0 2px 4px rgba(28,35,33,.06); }
+.grid { display: grid; gap: 16px; }
+.dark { background: var(--slate); color: var(--chalk); position: relative; overflow: hidden; }
+.dark h2, .dark h3 { color: var(--chalk); }
+.dark .sub { opacity: .74; }
+.dark::before { content: ''; position: absolute; top: -30%; right: -10%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(91,214,169,.12) 0%, transparent 75%); border-radius: 50%; pointer-events: none; }
+.dark > * { position: relative; z-index: 1; }
+
+/* ============ Hero ============ */
+.hero { padding: 36px 0 56px; }
+.hero-grid { display: grid; gap: 48px; }
+.hero-copy .sub { margin-top: 20px; max-width: 46ch; }
+.hero-ctas { display: grid; gap: 12px; margin-top: 30px; }
+.hero-pills { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+.pill { display: inline-block; font-family: var(--mono); font-size: 12px; padding: 8px 15px; border-radius: 999px; border: 1px solid var(--mist); background: #fff; font-weight: 500; }
+.dark .pill { background: rgba(237,239,242,.08); border-color: rgba(237,239,242,.2); color: var(--chalk); }
+
+/* ============ Phone frame ============ */
+.phone-wrap { justify-self: center; width: 100%; max-width: 320px; }
+.phone { width: 100%; border-radius: 44px; border: 10px solid #000; background: var(--slate); overflow: hidden; box-shadow: 0 24px 80px rgba(14,17,22,.35); }
+.phone .screen { height: 540px; position: relative; padding: 20px 18px; display: flex; flex-direction: column; }
+
+/* ============ Stats ============ */
+.stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px 16px; }
+.stat { text-align: center; }
+.stat-value { font-family: var(--serif); font-size: 38px; font-weight: 600; color: var(--river); line-height: 1; margin-bottom: 8px; }
+.stat-label { font-size: 14px; opacity: .72; font-weight: 500; }
+
+/* ============ Icon boxes & tiles ============ */
+.icon-box { width: 56px; height: 56px; background: linear-gradient(135deg, rgba(46,110,101,.14), rgba(46,110,101,.05)); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0; }
+.dark .icon-box { background: linear-gradient(135deg, rgba(91,214,169,.18), rgba(91,214,169,.06)); }
+.feature-tile { background: #fff; border: 1.5px solid var(--mist); border-radius: 16px; padding: 24px 20px; text-align: center; transition: all .3s; }
+.feature-tile-icon { width: 52px; height: 52px; background: linear-gradient(135deg, rgba(46,110,101,.12), rgba(46,110,101,.04)); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 26px; margin: 0 auto 14px; }
+.feature-tile h3 { margin: 0 0 10px; font-size: 17px; }
+.feature-tile p { opacity: .75; font-size: 14.5px; }
+
+/* ============ Meeting mode ============ */
+.mm-grid { display: grid; gap: 40px; }
+.mm-list { list-style: none; padding: 0; display: grid; gap: 18px; margin-top: 28px; }
+.mm-list li { display: flex; gap: 14px; font-size: 15.5px; }
+.mm-list li > span:first-child { color: var(--signal); font-size: 22px; flex-shrink: 0; line-height: 1.4; }
+.mm-cards { display: grid; gap: 16px; }
+.mm-card { background: rgba(237,239,242,.08); border: 1px solid rgba(237,239,242,.15); border-radius: 18px; padding: 22px; }
+.mm-card-label { font-family: var(--mono); font-size: 12px; color: var(--signal); margin-bottom: 10px; letter-spacing: .1em; text-transform: uppercase; font-weight: 600; }
+.mm-card p { color: var(--chalk); opacity: .85; font-size: 15px; margin: 0; }
+
+/* ============ Pricing ============ */
+.pricing-grid { display: grid; gap: 24px; margin-top: 40px; max-width: 900px; }
+.pricing-grid .card.pro { order: -1; border: 2.5px solid var(--river); position: relative; }
+.price-tag { font-family: var(--serif); font-size: 40px; font-weight: 600; color: var(--river); margin: 14px 0 4px; line-height: 1; }
+.plan-list { list-style: none; padding: 0; display: grid; gap: 11px; font-size: 15px; opacity: .85; margin: 18px 0 24px; }
+.plan-list li { display: flex; gap: 10px; }
+.plan-list li > span:first-child { color: var(--river); font-weight: bold; }
+
+/* ============ FAQ ============ */
+details { border-bottom: 1px solid var(--mist); padding: 4px 0; }
+details summary { font-weight: 600; font-size: 16px; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; user-select: none; cursor: pointer; padding: 18px 0; min-height: 48px; }
+details summary::-webkit-details-marker { display: none; }
+details summary::after { content: '+'; font-size: 24px; opacity: .3; transition: all .2s; font-weight: 400; flex-shrink: 0; }
+details[open] summary::after { content: '−'; opacity: .6; }
+details p { padding: 0 0 18px; opacity: .78; font-size: 15px; line-height: 1.75; }
+
+/* ============ Sticky bottom app bar (mobile) ============ */
+.appbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 95; display: flex; gap: 10px; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: rgba(250,248,243,.94); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-top: 1px solid var(--mist); }
+.appbar .badge-appstore { flex: 1.3; min-height: 50px; padding: 8px 12px; box-shadow: none; }
+.appbar .badge-appstore span { font-size: 16px; }
+.appbar .btn.ghost { flex: 1; min-height: 50px; padding: 8px 12px; font-size: 15px; }
+
+/* ============ Footer ============ */
+footer.site { border-top: 1px solid var(--mist); padding: 48px 0 40px; margin-top: 40px; }
+footer.site .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 32px 20px; }
+footer.site .brand-col { grid-column: 1 / -1; }
+footer.site a { color: var(--ink); opacity: .65; text-decoration: none; display: block; margin: 10px 0; font-size: 15px; transition: opacity .2s; }
+footer.site a.mark { display: flex; opacity: 1; margin: 0; font-size: 19px; }
+footer.site a:hover { opacity: 1; }
+footer.site .head { font-family: var(--mono); font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase; opacity: .5; margin-bottom: 12px; font-weight: 700; }
+.footer-credit { font-size: 12.5px; opacity: .55; margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--mist); }
+
+/* ============ Waitlist modal (bottom sheet on mobile) ============ */
+.modal { display: none; position: fixed; z-index: 1000; inset: 0; background: rgba(0,0,0,.5); }
+.modal.open { display: flex; align-items: flex-end; justify-content: center; }
+.modal-content { background: var(--paper); border-radius: 24px 24px 0 0; padding: 30px 22px calc(30px + env(safe-area-inset-bottom)); width: 100%; box-shadow: 0 -10px 40px rgba(0,0,0,.25); position: relative; }
+.modal-content h2 { margin-bottom: 10px; font-size: 26px; }
+.modal-content .sub { font-size: 15.5px; margin: 8px 0 24px; opacity: .7; }
+.modal-close { position: absolute; top: 14px; right: 14px; background: none; border: none; font-size: 26px; cursor: pointer; opacity: .5; transition: opacity .2s; width: 44px; height: 44px; }
+.modal-close:hover { opacity: 1; }
+.waitlist-form { display: grid; gap: 14px; }
+.waitlist-form input { width: 100%; padding: 15px 16px; font-size: 16px; border: 1.5px solid var(--mist); border-radius: 14px; font-family: var(--sans); transition: all .2s; }
+.waitlist-form input:focus { outline: none; border-color: var(--river); box-shadow: 0 0 0 3px rgba(46,110,101,.1); }
+.waitlist-form button { min-height: 52px; padding: 14px 24px; background: var(--river); color: #fff; border: none; border-radius: 14px; font-weight: 600; font-size: 16px; cursor: pointer; transition: all .2s; box-shadow: 0 4px 12px rgba(46,110,101,.15); }
+.waitlist-form button:active { transform: scale(.98); }
+.waitlist-success { text-align: center; padding: 16px 0; }
+.waitlist-success .icon { font-size: 48px; margin-bottom: 14px; color: var(--river); }
+.waitlist-success h3 { margin-bottom: 8px; color: var(--river); }
+.waitlist-success p { opacity: .7; }
+
+/* ============ Reveal ============ */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+  .card, .feature-tile, .btn { transition: none; }
+}
+
+/* ============================================================
+   DESKTOP & TABLET UPGRADES (mobile styles above are the base)
+   ============================================================ */
+@media (min-width: 640px) {
+  .wrap { padding: 0 24px; }
+  .grid.cols2, .grid.cols3 { grid-template-columns: repeat(2, 1fr); gap: 22px; }
+  .hero-ctas { display: flex; flex-wrap: wrap; align-items: center; }
+  .hero-ctas .btn, .hero-ctas .badge-appstore { width: auto; }
+  .modal.open { align-items: center; }
+  .modal-content { max-width: 480px; border-radius: 20px; padding: 40px; }
+  .sub { font-size: 18px; }
+}
+
+@media (min-width: 920px) {
+  body { padding-bottom: 0; }
+  .appbar { display: none; }
+  .navbar { padding: 12px 0; }
+  .hamburger { display: none; }
+  .menu { display: flex !important; flex-direction: row; align-items: center; gap: 26px; padding: 0; width: auto; order: 0; }
+  .menu a.navlink { border: none; padding: 0; font-size: 15px; opacity: .75; font-weight: 500; }
+  .menu a.navlink:hover { opacity: 1; }
+  .menu-actions { display: flex; margin: 0; gap: 12px; }
+  .menu-actions .btn { min-height: 46px; padding: 10px 22px; font-size: 15px; }
+  section { padding: 96px 0; }
+  .hero { padding: 64px 0 88px; }
+  .hero-grid { grid-template-columns: 1.05fr 1fr; gap: 64px; align-items: center; }
+  .phone-wrap { max-width: 340px; }
+  .phone .screen { height: 620px; }
+  .stats-grid { grid-template-columns: repeat(4, 1fr); gap: 36px; }
+  .stat-value { font-size: 48px; }
+  .stat-label { font-size: 16px; }
+  .grid.cols3 { grid-template-columns: repeat(3, 1fr); gap: 26px; }
+  .mm-grid { grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .pricing-grid { grid-template-columns: 1fr 1fr; }
+  .pricing-grid .card.pro { order: 0; }
+  .card { padding: 32px; }
+  .card:hover { box-shadow: 0 8px 24px rgba(28,35,33,.15); transform: translateY(-6px); }
+  .feature-tile:hover { border-color: var(--river); box-shadow: 0 8px 24px rgba(46,110,101,.12); transform: translateY(-4px); }
+  footer.site .cols { grid-template-columns: 2.5fr 1fr 1fr 1fr; gap: 40px; }
+  footer.site .brand-col { grid-column: auto; }
+  details summary { font-size: 17px; }
+  details p { font-size: 15.5px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site">
+  <div class="wrap">
+    <div class="navbar">
+      <a class="mark" href="index.html">
+        <img src="logo.png" alt="KaviNote lotus logo" width="46" height="46">
+        KaviNote
+      </a>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false" id="hamburgerBtn">
+        <svg id="iconOpen" viewBox="0 0 24 24" fill="none" stroke="#1C2321" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg id="iconClose" viewBox="0 0 24 24" fill="none" stroke="#1C2321" stroke-width="2" stroke-linecap="round" style="display:none;"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <nav class="menu" id="menu">
+        <a class="navlink" href="#how" onclick="closeMenu()">How it works</a>
+        <a class="navlink" href="#features" onclick="closeMenu()">Features</a>
+        <a class="navlink" href="#pricing" onclick="closeMenu()">Pricing</a>
+        <a class="navlink" href="help.html">Help</a>
+        <a class="navlink" href="support.html">Support</a>
+        <div class="menu-actions">
+          <button class="btn ghost" onclick="closeMenu(); openWaitlist();">Join waitlist</button>
+          <a class="btn" href="#download" onclick="closeMenu()">Get the app</a>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="wrap">
+<section class="hero" id="top">
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Meet your meeting copilot</p>
+      <h1>Listen to the question. Read your answer.</h1>
+      <p class="sub">KaviNote hears what's being asked, finds your prepared answer in your notes, and scrolls right to it. You just read. 100% on your phone. Nothing ever leaves it.</p>
+      <div class="hero-ctas">
+        <a class="badge-appstore" href="https://apps.apple.com/app/kavinote/id0000000000" title="Download KaviNote from App Store">
+          <svg width="22" height="26" viewBox="0 0 384 512" fill="#fff" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+          <span><small>Download on</small>App Store</span>
+        </a>
+        <a class="btn ghost" href="#how">See how it works</a>
+      </div>
+      <div class="hero-pills">
+        <span class="pill">🔒 100% on-device</span>
+        <span class="pill">🚫 No accounts</span>
+        <span class="pill">✈️ Works offline</span>
+      </div>
+    </div>
+
+    <div class="phone-wrap">
+      <div class="phone">
+        <div class="screen">
+          <div style="display:flex; justify-content:space-between; align-items:center; color:rgba(237,239,242,.6); margin-bottom:14px;">
+            <span style="font-family:var(--mono); font-size:11px; letter-spacing:.18em; font-weight:600;">KAVINOTE</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5BD6A9" stroke-width="2.5" aria-hidden="true"><path d="M12 2a4 4 0 0 1 4 4v6a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg>
+          </div>
+          <div style="overflow:hidden; flex:1;">
+            <div id="deck" style="transition: transform .45s ease-in-out;">
+              <div style="opacity:.45; padding:14px 0;">
+                <div style="font-family:var(--mono); font-size:10px; color:rgba(237,239,242,.4); letter-spacing:.08em; text-transform:uppercase;">What is the CAP theorem?</div>
+                <div style="font-family:var(--serif); font-size:14px; line-height:1.7; color:#EDEFF2; margin-top:8px;">During a network partition you choose between consistency and availability — you can't have both...</div>
+              </div>
+              <div id="hitBlock" style="border:1.5px solid transparent; border-radius:14px; padding:14px; transition: all .45s;">
+                <div style="font-family:var(--mono); font-size:10px; color:rgba(237,239,242,.55); letter-spacing:.08em; text-transform:uppercase;">How would you design a rate limiter?</div>
+                <div style="font-family:var(--serif); font-size:15px; line-height:1.8; color:#EDEFF2; margin-top:8px;">I'd use a token bucket per client key in a fast in-memory store. Each request consumes a token; tokens refill at a fixed rate.</div>
+              </div>
+              <div style="opacity:.45; padding:14px 0;">
+                <div style="font-family:var(--mono); font-size:10px; color:rgba(237,239,242,.4); letter-spacing:.08em; text-transform:uppercase;">What is eventual consistency?</div>
+                <div style="font-family:var(--serif); font-size:14px; line-height:1.7; color:#EDEFF2; margin-top:8px;">Replicas converge to the same value eventually; reads right after a write may briefly be stale...</div>
+              </div>
+            </div>
+          </div>
+          <div style="border-top: 1px solid rgba(237,239,242,.1); padding-top:14px; margin-top:12px;">
+            <div id="heard" style="font-family:var(--mono); font-size:11px; color:rgba(237,239,242,.55); min-height:16px; text-align:center; margin-bottom:8px; font-weight:500;"></div>
+            <canvas id="flow" width="264" height="28" style="width:100%; height:28px;"></canvas>
+          </div>
+        </div>
+      </div>
+      <p class="meta" style="text-align:center; margin-top:16px;">Meeting Mode, live matching demo</p>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- STATS BANNER -->
+<div class="wrap">
+<section style="padding: 44px 0; border-top: 1px solid var(--mist); border-bottom: 1px solid var(--mist);">
+  <div class="stats-grid">
+    <div class="stat">
+      <div class="stat-value">100%</div>
+      <div class="stat-label">Processing on your phone</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">0ms</div>
+      <div class="stat-label">Network latency (it's local)</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">∞</div>
+      <div class="stat-label">Notes you can store</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">$0</div>
+      <div class="stat-label">Data we collect</div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- PROBLEM / SOLUTION -->
+<div class="wrap">
+<section style="text-align:center;">
+  <p class="eyebrow">The problem</p>
+  <h2 style="margin-top:12px; max-width:54ch; margin-left:auto; margin-right:auto;">You prepare for days. But the moment someone asks an unexpected question, you freeze.</h2>
+  <p class="sub" style="margin-top:20px; max-width:60ch; margin-left:auto; margin-right:auto; opacity:.7;">In interviews, client calls, and presentations, you need to sound prepared and confident. You spent hours building your knowledge base. But under pressure, finding the right answer in your own notes takes precious seconds — seconds you don't have.</p>
+</section>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="wrap">
+<section id="how" style="border-top:1px solid var(--mist);">
+  <p class="eyebrow">How it works</p>
+  <h2 style="margin-top:12px;">Three steps from prepared to answered.</h2>
+  <div class="grid cols3" style="margin-top:36px;">
+    <div class="card">
+      <div class="icon-box">📝</div>
+      <div class="meta" style="margin:16px 0 10px;">STEP 1</div>
+      <h3 style="margin:0 0 12px;">Paste your prep</h3>
+      <p style="opacity:.76; font-size:15px;">Copy 160+ Q&As into KaviNote, upload a PDF, or start from a library pack. Your notes become your personal knowledge base.</p>
+    </div>
+    <div class="card">
+      <div class="icon-box">🎙️</div>
+      <div class="meta" style="margin:16px 0 10px;">STEP 2</div>
+      <h3 style="margin:0 0 12px;">Start listening</h3>
+      <p style="opacity:.76; font-size:15px;">In Meeting Mode, tap the mic. KaviNote listens to every question asked — on your phone, in real time, with perfect privacy.</p>
+    </div>
+    <div class="card">
+      <div class="icon-box">✨</div>
+      <div class="meta" style="margin:16px 0 10px;">STEP 3</div>
+      <h3 style="margin:0 0 12px;">Read your answer</h3>
+      <p style="opacity:.76; font-size:15px;">The app finds your prepared answer and scrolls to it instantly. You read with confidence. It's that simple.</p>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- MEETING MODE SHOWCASE -->
+<div class="dark">
+<div class="wrap">
+<section>
+  <div class="mm-grid">
+    <div class="reveal">
+      <p class="eyebrow" style="color:var(--signal); background:rgba(91,214,169,.1);">Meeting Mode</p>
+      <h2 style="margin-top:12px;">Listens for the whole meeting. Moves when it matters.</h2>
+      <p class="sub" style="margin-top:18px;">Interviews, client calls, performance reviews, investor pitches — prop your iPhone beside the laptop and let KaviNote follow the conversation in real time.</p>
+      <ul class="mm-list">
+        <li><span>•</span><span><strong style="color:var(--chalk);">Nonstop listening</strong> — speech recognition continues seamlessly through your entire meeting.</span></li>
+        <li><span>•</span><span><strong style="color:var(--chalk);">Understands paraphrases</strong> — semantic AI (MiniLM, running locally) matches questions even when phrased differently.</span></li>
+        <li><span>•</span><span><strong style="color:var(--chalk);">Sure? Auto-scrolls. Unsure? Suggests.</strong> Confident matches scroll instantly; weaker ones appear as tap-to-jump chips.</span></li>
+        <li><span>•</span><span><strong style="color:var(--chalk);">Silent by design</strong> — dark screen, no sounds, no distractions. Stays awake for the entire call.</span></li>
+      </ul>
+    </div>
+    <div class="reveal mm-cards">
+      <div class="mm-card">
+        <div class="mm-card-label">⚡ Fast matching</div>
+        <p>Semantic matching finds your answer in 200-500ms. By the time they finish the question, your note is highlighted.</p>
+      </div>
+      <div class="mm-card">
+        <div class="mm-card-label">🧠 Smart understanding</div>
+        <p>Matches meaning, not keywords. "How do rate limits work?" scrolls to your rate limiter explanation.</p>
+      </div>
+      <div class="mm-card">
+        <div class="mm-card-label">📱 Your phone, your data</div>
+        <p>All processing happens on-device. No servers, no cloud APIs, no third parties. Works in airplane mode.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+</div>
+
+<!-- FEATURES GRID -->
+<div class="wrap">
+<section id="features" style="border-top:1px solid var(--mist);">
+  <p class="eyebrow">Everything else it does</p>
+  <h2 style="margin-top:12px;">One notebook. Two workspaces. Infinite possibilities.</h2>
+  <div class="grid cols3" style="margin-top:36px;">
+    <div class="feature-tile">
+      <div class="feature-tile-icon">🔄</div>
+      <h3>Personal & Professional modes</h3>
+      <p>Light mode for everyday notes, dark Meeting Mode for interview prep. One notebook, two workspaces.</p>
+    </div>
+    <div class="feature-tile">
+      <div class="feature-tile-icon">🎤</div>
+      <h3>Capture by voice</h3>
+      <p>Tap record and talk. Lectures, ideas, meetings auto-transcribed with punctuation. Find them later by voice.</p>
+    </div>
+    <div class="feature-tile">
+      <div class="feature-tile-icon">📄</div>
+      <h3>Upload anything</h3>
+      <p>PDF, text file, or email — KaviNote reads it and lets you search by voice instantly.</p>
+    </div>
+    <div class="feature-tile">
+      <div class="feature-tile-icon">❓</div>
+      <h3>Ask out loud</h3>
+      <p>"Find my rate limiter answer" — jump straight to any note by speaking. No typing needed.</p>
+    </div>
+    <div class="feature-tile">
+      <div class="feature-tile-icon">📺</div>
+      <h3>Teleprompter</h3>
+      <p>Read any note hands-free with smooth scroll control. Practice your delivery with mirror mode.</p>
+    </div>
+    <div class="feature-tile">
+      <div class="feature-tile-icon">🎓</div>
+      <h3>Starter library</h3>
+      <p>Five curated packs: Python, System Design, SQL, AI/ML, Behavioral. Copy and personalize in seconds.</p>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- USE CASES -->
+<div class="wrap">
+<section style="border-top:1px solid var(--mist);">
+  <p class="eyebrow">Perfect for</p>
+  <h2 style="margin-top:12px;">Every high-stakes conversation.</h2>
+  <div class="grid cols3" style="margin-top:36px;">
+    <div class="card">
+      <h3 style="margin-top:0; color:var(--river);">Tech interviews</h3>
+      <p style="font-size:15px; opacity:.78;">Prep for system design, data structures, behavioral rounds. Get instant access to your prep notes during virtual interviews.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0; color:var(--river);">Client calls</h3>
+      <p style="font-size:15px; opacity:.78;">Have your talking points, product details, and pricing ready. Answer confidently while maintaining eye contact.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0; color:var(--river);">Sales presentations</h3>
+      <p style="font-size:15px; opacity:.78;">Reference your pitch deck, pricing, objection handles. Sound prepared without reading off a script.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0; color:var(--river);">Investor pitches</h3>
+      <p style="font-size:15px; opacity:.78;">Know your metrics, story, and responses. Answer tough questions with the detail you prepared for.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0; color:var(--river);">Performance reviews</h3>
+      <p style="font-size:15px; opacity:.78;">Discuss your accomplishments, career goals, and feedback. Come prepared with examples and data.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0; color:var(--river);">Lectures & speaking</h3>
+      <p style="font-size:15px; opacity:.78;">Reference your notes during live talks. Speak naturally while having your detailed research at hand.</p>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- PRIVACY MANIFESTO -->
+<div class="wrap">
+<section style="border-top:1px solid var(--mist); text-align:center;">
+  <h2 style="max-width:28ch; margin:0 auto;">Your data, never our business.</h2>
+  <p class="sub" style="max-width:62ch; margin:20px auto 0; opacity:.7;">No accounts. No logins. No cloud APIs. No analytics. No servers. KaviNote processes everything on your iPhone — speech recognition, semantic matching, everything. Your voice never leaves your device. App Store privacy label: <strong>Data Not Collected.</strong></p>
+  <div style="margin-top:32px;">
+    <a class="btn" href="privacy.html">Read full privacy policy</a>
+  </div>
+</section>
+</div>
+
+<!-- PRICING -->
+<div class="wrap">
+<section id="pricing" style="border-top:1px solid var(--mist);">
+  <p class="eyebrow">Pricing</p>
+  <h2 style="margin-top:12px;">Free to try. Pro to master.</h2>
+  <div class="pricing-grid">
+    <div class="card">
+      <h3 style="margin-top:0;">Free Plan</h3>
+      <div class="price-tag">$0</div>
+      <ul class="plan-list">
+        <li><span>✓</span><span>Unlimited Personal notes</span></li>
+        <li><span>✓</span><span>1 Professional note</span></li>
+        <li><span>✓</span><span>3 starter library packs</span></li>
+        <li><span>✓</span><span>30 min listening/day</span></li>
+        <li><span>✓</span><span>100 questions/week</span></li>
+        <li><span>✓</span><span>Capture, teleprompter, voice search</span></li>
+      </ul>
+      <a class="btn ghost block" href="https://apps.apple.com/app/kavinote/id0000000000">Start free</a>
+    </div>
+    <div class="card pro">
+      <span style="position:absolute; top:-15px; right:20px; background:var(--river); color:#fff; font-size:12px; font-weight:700; padding:6px 16px; border-radius:999px; letter-spacing:.08em; text-transform:uppercase;">Most popular</span>
+      <h3 style="margin-top:0;">Pro Plan</h3>
+      <div class="price-tag">$49<span style="font-size:17px; font-family:var(--sans); opacity:.6; font-weight:400;">/year</span></div>
+      <div style="font-family:var(--mono); font-size:12.5px; opacity:.6; margin-top:6px; letter-spacing:.06em;">or $6.99/month · via App Store</div>
+      <ul class="plan-list">
+        <li><span>✓</span><span><strong>Unlimited Professional notes</strong></span></li>
+        <li><span>✓</span><span><strong>Unlimited listening</strong></span></li>
+        <li><span>✓</span><span><strong>Unlimited question matching</strong></span></li>
+        <li><span>✓</span><span><strong>All library packs</strong></span></li>
+        <li><span>✓</span><span><strong>Pro teleprompter controls</strong></span></li>
+        <li><span>✓</span><span><strong>Priority support</strong></span></li>
+      </ul>
+      <a class="btn block" href="https://apps.apple.com/app/kavinote/id0000000000">Upgrade to Pro</a>
+    </div>
+  </div>
+  <p style="text-align:center; margin-top:28px; opacity:.7; font-size:14.5px;">No login required. Subscription billed through App Store. Cancel anytime.</p>
+</section>
+</div>
+
+<!-- FAQ -->
+<div class="wrap">
+<section style="border-top:1px solid var(--mist); max-width:820px; margin:0 auto;">
+  <h2 style="text-align:center;">Questions, answered</h2>
+  <div style="margin-top:28px;">
+    <details>
+      <summary>Does my audio really stay on my phone?</summary>
+      <p>Yes. KaviNote uses Apple's on-device speech recognizer (requiring on-device processing) and runs the semantic matching model (MiniLM) locally via Core ML. Nothing is recorded, transmitted, or stored anywhere — not on our servers, not in the cloud. You can verify this by using KaviNote in airplane mode — it works perfectly.</p>
+    </details>
+    <details>
+      <summary>Do I need an account or to sign up?</summary>
+      <p>Nope. Zero accounts, zero sign-ups. Even the Pro subscription runs through your App Store account invisibly — no logins, no email, no passwords, no personal data shared with us.</p>
+    </details>
+    <details>
+      <summary>How accurate is the matching?</summary>
+      <p>It matches meaning, not exact words. A question phrased differently from your notes still lands on your answer — that's the whole point. Accuracy improves when your note questions use everyday vocabulary. Check the Help Center for tips on phrasing that maximizes matching quality.</p>
+    </details>
+    <details>
+      <summary>Can it hear both people on a call?</summary>
+      <p>Yes. Place the phone near your laptop's speakers. KaviNote transcribes whatever it hears clearly — a single voice works best, but it'll catch questions from multiple speakers.</p>
+    </details>
+    <details>
+      <summary>Is it OK to use during interviews?</summary>
+      <p>KaviNote is a preparation and reference tool — same category as cue cards and teleprompters. You're responsible for following the rules of your specific situation: employer policies, interview rules, recording-consent laws, etc. Know your local laws and interview guidelines.</p>
+    </details>
+    <details>
+      <summary>What if I lose my phone or data?</summary>
+      <p>Your notes are stored on your device. If you enable iCloud sync in Settings, notes back up to your personal iCloud (encrypted, your account). If you don't enable iCloud sync, enable it now to protect your data — or keep your own backups.</p>
+    </details>
+    <details>
+      <summary>Does it work on iPad?</summary>
+      <p>Yes. Install KaviNote on iPad the same way. If you use the same Apple ID, your subscription and iCloud notes sync across devices.</p>
+    </details>
+    <details>
+      <summary>Can I export my notes?</summary>
+      <p>You can copy-paste notes into email or other apps. Full export is on our roadmap. For now, you can also open notes in text editors and copy from there.</p>
+    </details>
+  </div>
+</section>
+</div>
+
+<!-- FINAL CTA -->
+<div class="dark" id="download">
+<div class="wrap">
+<section style="text-align:center;">
+  <img src="logo.png" alt="" width="72" height="72" style="border-radius:18px; margin:0 auto; display:block;">
+  <h2 style="margin-top:24px; margin-bottom:0;">Walk into your next meeting prepared.</h2>
+  <p class="sub" style="margin-top:14px; margin-bottom:0; opacity:.75;">Free to start. Pro when you're ready. Everything stays on your phone.</p>
+  <div style="margin-top:32px; display:grid; gap:12px; max-width:340px; margin-left:auto; margin-right:auto;">
+    <a class="badge-appstore" href="https://apps.apple.com/app/kavinote/id0000000000" title="Download KaviNote from the App Store" style="border:1px solid rgba(237,239,242,.2);">
+      <svg width="22" height="26" viewBox="0 0 384 512" fill="#fff" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+      <span><small>Download on</small>App Store</span>
+    </a>
+    <button class="btn ghost" onclick="openWaitlist()" style="border-color:var(--signal); color:var(--signal) !important;">Join the waitlist</button>
+  </div>
+</section>
+</div>
+</div>
+
+<!-- FOOTER -->
+<div class="wrap">
+<footer class="site">
+  <div class="cols">
+    <div class="brand-col">
+      <a class="mark" href="index.html">
+        <img src="logo.png" alt="KaviNote lotus logo" width="40" height="40" style="width:40px; height:40px;">
+        KaviNote
+      </a>
+      <p style="font-size:15px; opacity:.6; max-width:34ch; line-height:1.7; margin:14px 0 0;">On-device meeting copilot. Listen. Find. Read. Prepared, always.</p>
+      <p style="font-size:13px; opacity:.45; margin-top:16px;">Built by <strong>Kavivas Tech Pvt Ltd</strong>, India</p>
+      <p style="font-size:12px; opacity:.35; margin-top:8px;">© 2026 KaviNote. All rights reserved.</p>
+    </div>
+    <div>
+      <div class="head">Product</div>
+      <a href="#how">How it works</a>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="https://apps.apple.com/app/kavinote/id0000000000">App Store</a>
+    </div>
+    <div>
+      <div class="head">Resources</div>
+      <a href="help.html">Help center</a>
+      <a href="support.html">Contact support</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </div>
+    <div>
+      <div class="head">Company</div>
+      <a href="https://kavivas.in" title="Kavivas Tech official website">Kavivas Tech</a>
+      <a href="mailto:hello@kavinote.app">Email us</a>
+      <a href="https://twitter.com/kavinoteapp" title="KaviNote on Twitter">Twitter</a>
+      <a href="https://linkedin.com/company/kavivas-tech" title="Kavivas Tech on LinkedIn">LinkedIn</a>
+    </div>
+  </div>
+  <div class="footer-credit">
+    <p style="margin:0; opacity:.8; font-size:12px;">KaviNote is a product of <strong>Kavivas Tech Pvt Ltd</strong>, based in India. Designed for privacy. Built for performance.</p>
+  </div>
+</footer>
+</div>
+
+<!-- STICKY MOBILE APP BAR -->
+<div class="appbar" id="appbar">
+  <a class="badge-appstore" href="https://apps.apple.com/app/kavinote/id0000000000" title="Download KaviNote from App Store">
+    <svg width="16" height="20" viewBox="0 0 384 512" fill="#fff" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+    <span style="font-size:15px;">App Store</span>
+  </a>
+  <button class="btn ghost" onclick="openWaitlist()">Join waitlist</button>
+</div>
+
+<!-- Waitlist Modal -->
+<div id="waitlistModal" class="modal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeWaitlist()" aria-label="Close">✕</button>
+
+    <div id="waitlistForm">
+      <h2>Join the Waitlist</h2>
+      <p class="sub">Be the first to get early access to KaviNote when it launches.</p>
+
+      <form class="waitlist-form" onsubmit="submitWaitlist(event)">
+        <input type="email" id="waitlistEmail" placeholder="your@email.com" autocomplete="email" required>
+        <button type="submit">Get Early Access</button>
+      </form>
+
+      <p style="text-align:center; font-size:13px; opacity:.5; margin-top:16px;">
+        We'll never spam you. Privacy-first, always.
+      </p>
+    </div>
+
+    <div id="waitlistSuccess" style="display:none;">
+      <div class="waitlist-success">
+        <div class="icon">✓</div>
+        <h3>You're on the waitlist!</h3>
+        <p>Check your email for updates. We'll reach out soon.</p>
+        <button class="btn block" onclick="closeWaitlist()" style="margin-top:20px;">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* Mobile menu */
+function toggleMenu() {
+  var menu = document.getElementById('menu');
+  var open = menu.classList.toggle('open');
+  document.getElementById('iconOpen').style.display = open ? 'none' : 'block';
+  document.getElementById('iconClose').style.display = open ? 'block' : 'none';
+  document.getElementById('hamburgerBtn').setAttribute('aria-expanded', open);
+}
+function closeMenu() {
+  var menu = document.getElementById('menu');
+  if (menu.classList.contains('open')) toggleMenu();
+}
+
+/* Hero demo */
+(function(){
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, {threshold:.15});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  var canvas = document.getElementById('flow');
+  if (canvas && !reduced) {
+    var ctx = canvas.getContext('2d'), ph = 0;
+    (function draw(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      ctx.beginPath();
+      var mid = canvas.height/2, amp = 5.5 + Math.sin(ph*.7)*3.5;
+      for (var x=0; x<=canvas.width; x+=3){
+        var y = mid + Math.sin((x/canvas.width)*4*Math.PI+ph)*amp*Math.sin(ph*1.3+x*.02);
+        x===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+      }
+      ctx.strokeStyle = '#5BD6A9'; ctx.lineWidth = 1.8; ctx.stroke();
+      ph += .09; requestAnimationFrame(draw);
+    })();
+  }
+
+  var heard = document.getElementById('heard'), deck = document.getElementById('deck'), hit = document.getElementById('hitBlock');
+  var line = '"…how would you design a rate limiter?"';
+  function type(i){ if(i>line.length) return; heard.textContent = line.slice(0,i); setTimeout(function(){type(i+2);}, 40); }
+  function demo(){
+    heard.textContent=''; hit.style.borderColor='transparent'; hit.style.background='transparent'; deck.style.transform='translateY(0)';
+    if (reduced) { hit.style.borderColor='#5BD6A9'; return; }
+    setTimeout(function(){ type(1); }, 1100);
+    setTimeout(function(){ hit.style.borderColor='#5BD6A9'; hit.style.background='rgba(255,255,255,.05)'; deck.style.transform='translateY(-108px)'; }, 3500);
+  }
+  demo(); if (!reduced) setInterval(demo, 10000);
+})();
+
+/* Waitlist modal */
+function openWaitlist() {
+  document.getElementById('waitlistModal').classList.add('open');
+}
+function closeWaitlist() {
+  document.getElementById('waitlistModal').classList.remove('open');
+  document.getElementById('waitlistForm').style.display = 'block';
+  document.getElementById('waitlistSuccess').style.display = 'none';
+}
+function submitWaitlist(e) {
+  e.preventDefault();
+  const email = document.getElementById('waitlistEmail').value;
+  if (!email || !email.includes('@')) {
+    alert('Please enter a valid email');
+    return;
+  }
+  fetch('/api/waitlist', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: email })
+  }).then(r => r.json()).then(data => {
+    if (data.success) {
+      document.getElementById('waitlistForm').style.display = 'none';
+      document.getElementById('waitlistSuccess').style.display = 'block';
+      document.getElementById('waitlistEmail').value = '';
+    }
+  }).catch(err => console.error('Error:', err));
+}
+document.addEventListener('DOMContentLoaded', function() {
+  var modal = document.getElementById('waitlistModal');
+  if (modal) {
+    modal.onclick = function(e) {
+      if (e.target === this) closeWaitlist();
+    }
+  }
+});
+</script>
+
+</body>
+</html>

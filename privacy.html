@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="KaviNote Privacy Policy - We collect zero data. Audio processed on-device only. No accounts, no analytics, no cloud APIs. Built by Kavivas Tech.">
+<meta name="keywords" content="privacy policy, data privacy, on-device processing, no tracking, data collection">
+<meta name="author" content="Kavivas Tech Pvt Ltd">
+<meta name="robots" content="index, follow">
+<meta name="canonical" href="https://kavinote.app/privacy.html">
+<title>Privacy Policy — KaviNote | Kavivas Tech</title>
+<style>
+/* KaviNote site — Quiet Stage design system */
+:root {
+  --paper: #FAF8F3; --ink: #1C2321; --river: #2E6E65; --mist: #DCE4E0;
+  --slate: #0E1116; --chalk: #EDEFF2; --signal: #5BD6A9; --ember: #E8A87C;
+  --serif: Georgia, 'Times New Roman', serif;
+  --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+* { margin: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.65; font-size: 16.5px; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+a { color: var(--river); text-decoration: none; }
+a:hover { opacity: .8; }
+
+/* Nav (mobile-first) */
+header.site { position: sticky; top: 0; z-index: 100; background: rgba(250,248,243,.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--mist); }
+.navbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 0; }
+.mark { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 19px; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; white-space: nowrap; }
+.mark img { width: 46px; height: 46px; border-radius: 12px; display: block; }
+.hamburger { width: 46px; height: 46px; border: 1.5px solid var(--mist); background: #fff; border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0; flex-shrink: 0; }
+.hamburger svg { width: 22px; height: 22px; }
+.menu { display: none; flex-direction: column; padding: 4px 0 20px; width: 100%; order: 3; }
+.menu.open { display: flex; }
+.menu a.navlink { padding: 14px 4px; font-size: 17px; font-weight: 500; color: var(--ink); border-bottom: 1px solid var(--mist); }
+.menu-actions { display: grid; gap: 10px; margin-top: 18px; }
+footer.site a.mark { display: flex; opacity: 1; font-size: 19px; }
+@media (min-width: 920px) {
+  .navbar { padding: 12px 0; }
+  .hamburger { display: none; }
+  .menu { display: flex !important; flex-direction: row; align-items: center; gap: 26px; padding: 0; width: auto; order: 0; }
+  .menu a.navlink { border: none; padding: 0; font-size: 15px; opacity: .75; }
+  .menu a.navlink:hover { opacity: 1; }
+  .menu-actions { display: flex; margin: 0; gap: 12px; }
+}
+.btn { display: inline-block; background: var(--river); color: #fff !important; text-decoration: none; padding: 12px 24px; border-radius: 12px; font-weight: 500; font-size: 15.5px; border: none; cursor: pointer; transition: all .2s ease; box-shadow: 0 2px 8px rgba(46,110,101,.12); }
+.btn:hover { box-shadow: 0 6px 16px rgba(46,110,101,.18); transform: translateY(-2px); }
+
+/* Type */
+h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(40px, 5.5vw, 64px); line-height: 1.1; letter-spacing: -0.02em; }
+h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(28px, 4vw, 42px); line-height: 1.2; }
+.meta { font-family: var(--mono); font-size: 13px; opacity: .55; letter-spacing: .05em; }
+
+/* Article pages */
+.article { max-width: 760px; margin: 0 auto; padding: 32px 24px 80px; }
+.article h1 { font-size: clamp(32px, 4.5vw, 48px); margin: 28px 0 8px; font-family: var(--serif); font-weight: 500; letter-spacing: -0.01em; }
+.article h2 { font-size: 24px; font-family: var(--serif); font-weight: 500; margin: 40px 0 16px; color: var(--river); }
+.article h3 { font-size: 18px; font-weight: 600; margin: 28px 0 12px; }
+.article p, .article li { opacity: .8; line-height: 1.75; }
+.article ul { padding-left: 24px; }
+.article li { margin-bottom: 8px; }
+
+.callout { background: linear-gradient(135deg, rgba(46,110,101,.08), rgba(46,110,101,.03)); border: 1.5px solid var(--river); border-radius: 16px; padding: 24px; margin: 28px 0; }
+.callout strong { color: var(--river); }
+
+/* Footer */
+footer.site { border-top: 1px solid var(--mist); padding: 48px 0 56px; margin-top: 60px; }
+footer.site .cols { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 32px; }
+footer.site a { color: var(--ink); opacity: .65; text-decoration: none; display: block; margin: 6px 0; font-size: 14.5px; transition: opacity .2s; }
+footer.site a:hover { opacity: 1; }
+footer.site .head { font-family: var(--mono); font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; opacity: .5; margin-bottom: 12px; }
+
+@media (max-width: 860px) {
+  .navlinks a.hideMobile { display: none; }
+  footer.site .cols { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .wrap { padding: 0 16px; }
+}
+</style>
+</head>
+<body>
+<header class="site">
+<div class="wrap">
+<div class="navbar">
+  <a class="mark" href="index.html">
+    <img src="logo.png" alt="KaviNote lotus logo" width="46" height="46">
+    KaviNote
+  </a>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false" id="hamburgerBtn">
+    <svg id="iconOpen" viewBox="0 0 24 24" fill="none" stroke="#1C2321" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    <svg id="iconClose" viewBox="0 0 24 24" fill="none" stroke="#1C2321" stroke-width="2" stroke-linecap="round" style="display:none;"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <nav class="menu" id="menu">
+    <a class="navlink" href="index.html#how">How it works</a>
+    <a class="navlink" href="index.html#features">Features</a>
+    <a class="navlink" href="index.html#pricing">Pricing</a>
+    <a class="navlink" href="help.html">Help</a>
+    <a class="navlink" href="support.html">Support</a>
+    <div class="menu-actions">
+      <a class="btn" href="index.html#download">Get the app</a>
+    </div>
+  </nav>
+</div>
+</div>
+</header>
+
+<div class="article">
+<h1>Privacy Policy</h1>
+<p class="meta" style="margin-bottom:26px;">Effective July 2026</p>
+
+<div class="callout"><strong>The short version:</strong> KaviNote collects no data. Your voice is processed entirely on your iPhone and never transmitted anywhere. Your notes stay on your device. There are no accounts, no analytics, no ads, and no third-party SDKs. The App Store privacy label is "Data Not Collected."</div>
+
+<h2>Audio and speech</h2>
+<p>KaviNote uses your iPhone's microphone and Apple's on-device speech recognition (with on-device processing explicitly required) to transcribe what it hears and match it against your own saved notes. Audio is processed in real time and is never recorded, stored, or sent off the device — not to us, not to Apple's servers, not to anyone. The matching model (MiniLM) also runs locally via Core ML. KaviNote works fully in airplane mode.</p>
+
+<h2>Your notes</h2>
+<p>Notes are stored locally on your device. If a version of KaviNote enables iCloud sync, notes sync only through your personal, private iCloud database, which belongs to your Apple account, is encrypted in transit, and is technically inaccessible to us.</p>
+
+<h2>What we collect</h2>
+<p>Nothing. KaviNote has no user accounts, no analytics, no crash-reporting SDKs beyond what Apple provides system-wide (which you control in iOS Settings → Privacy & Security → Analytics), no advertising identifiers, and no tracking of any kind.</p>
+
+<h2>Purchases</h2>
+<p>Pro subscriptions are processed entirely by Apple through the App Store. We do not receive your name, email address, or payment details. Apple's handling of that data is described in Apple's privacy policy.</p>
+
+<h2>Third parties in the room</h2>
+<p>KaviNote does not use or embed:</p>
+<ul>
+<li>Google Analytics, Mixpanel, Amplitude, or any analytics platform</li>
+<li>Sentry, Bugsnag, Crashlytics, or crash-reporting SDKs</li>
+<li>Firebase or any Google services</li>
+<li>Advertising networks or SDKs</li>
+<li>Social media tracking pixels</li>
+<li>Any third-party libraries that phone home</li>
+</ul>
+
+<h2>What Apple collects</h2>
+<p>Apple provides system-wide analytics that any app on iOS can participate in. This includes crash data and performance metrics. You control this at the OS level: Settings → Privacy & Security → Analytics. If you toggle off "Share iPhone Analytics," KaviNote won't contribute to Apple's aggregated diagnostics (and neither will any other app).</p>
+
+<h2>Children</h2>
+<p>KaviNote is not directed at children under 13. If we learn that someone under 13 has an account, we would delete it. If you believe a minor's data is in KaviNote, contact support.</p>
+
+<h2>Changes to this policy</h2>
+<p>We may update this policy as the app evolves. We'll post the new version here with an updated "Effective" date. If changes are material, we'll notify users in the app on next launch. Your continued use of KaviNote after a change means you accept the new policy.</p>
+
+<h2>Contact</h2>
+<p>Questions about privacy? Email support@kavinote.app. We take privacy seriously and will respond to all inquiries.</p>
+
+</div>
+
+<div class="wrap">
+<footer class="site">
+  <div class="cols">
+    <div>
+      <a class="mark" href="index.html" style="margin-bottom:14px;">
+        <img src="logo.png" alt="KaviNote lotus logo" width="40" height="40" style="width:40px; height:40px;">
+        KaviNote
+      </a>
+      <p style="font-size:14px; opacity:.6; max-width:32ch; line-height:1.6;">Notes that move with your voice. On-device, private, yours.</p>
+      <p style="font-size:13px; opacity:.45; margin-top:16px;">Built by <strong>Kavivas Tech Pvt Ltd</strong>, India</p>
+      <p style="font-size:12px; opacity:.35; margin-top:8px;">© 2026 KaviNote. All rights reserved.</p>
+    </div>
+    <div>
+      <div class="head">Product</div>
+      <a href="index.html#features">Features</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="help.html">Help center</a>
+      <a href="support.html">Support</a>
+    </div>
+    <div>
+      <div class="head">Legal</div>
+      <a href="#">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </div>
+  </div>
+</footer>
+</div>
+<script>
+function toggleMenu() {
+  var menu = document.getElementById('menu');
+  var open = menu.classList.toggle('open');
+  document.getElementById('iconOpen').style.display = open ? 'none' : 'block';
+  document.getElementById('iconClose').style.display = open ? 'block' : 'none';
+  document.getElementById('hamburgerBtn').setAttribute('aria-expanded', open);
+}
+</script>
+</body>
+</html>

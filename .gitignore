@@ -1,0 +1,3 @@
+# Local dev only — collected waitlist emails must never be public
+waitlist.json
+.claude/

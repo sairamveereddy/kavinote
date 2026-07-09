@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Contact KaviNote Support - Report bugs, request features, get help. Supported by Kavivas Tech Pvt Ltd, India. Fast response times, priority support for Pro users.">
+<meta name="keywords" content="KaviNote support, bug report, feature request, customer support, contact">
+<meta name="author" content="Kavivas Tech Pvt Ltd">
+<meta name="robots" content="index, follow">
+<meta name="canonical" href="https://kavinote.app/support.html">
+<title>Contact Support — KaviNote | Kavivas Tech</title>
+<style>
+/* KaviNote site — Quiet Stage design system */
+:root {
+  --paper: #FAF8F3; --ink: #1C2321; --river: #2E6E65; --mist: #DCE4E0;
+  --slate: #0E1116; --chalk: #EDEFF2; --signal: #5BD6A9; --ember: #E8A87C;
+  --serif: Georgia, 'Times New Roman', serif;
+  --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+* { margin: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.65; font-size: 16.5px; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+a { color: var(--river); text-decoration: none; }
+a:hover { opacity: .8; }
+
+/* Nav (mobile-first) */
+header.site { position: sticky; top: 0; z-index: 100; background: rgba(250,248,243,.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--mist); }
+.navbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 0; }
+.mark { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 19px; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; white-space: nowrap; }
+.mark img { width: 46px; height: 46px; border-radius: 12px; display: block; }
+.hamburger { width: 46px; height: 46px; border: 1.5px solid var(--mist); background: #fff; border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0; flex-shrink: 0; }
+.hamburger svg { width: 22px; height: 22px; }
+.menu { display: none; flex-direction: column; padding: 4px 0 20px; width: 100%; order: 3; }
+.menu.open { display: flex; }
+.menu a.navlink { padding: 14px 4px; font-size: 17px; font-weight: 500; color: var(--ink); border-bottom: 1px solid var(--mist); }
+.menu-actions { display: grid; gap: 10px; margin-top: 18px; }
+footer.site a.mark { display: flex; opacity: 1; font-size: 19px; }
+@media (min-width: 920px) {
+  .navbar { padding: 12px 0; }
+  .hamburger { display: none; }
+  .menu { display: flex !important; flex-direction: row; align-items: center; gap: 26px; padding: 0; width: auto; order: 0; }
+  .menu a.navlink { border: none; padding: 0; font-size: 15px; opacity: .75; }
+  .menu a.navlink:hover { opacity: 1; }
+  .menu-actions { display: flex; margin: 0; gap: 12px; }
+}
+.btn { display: inline-block; background: var(--river); color: #fff !important; text-decoration: none; padding: 12px 24px; border-radius: 12px; font-weight: 500; font-size: 15.5px; border: none; cursor: pointer; transition: all .2s ease; box-shadow: 0 2px 8px rgba(46,110,101,.12); }
+.btn:hover { box-shadow: 0 6px 16px rgba(46,110,101,.18); transform: translateY(-2px); }
+.btn:active { transform: scale(.98); }
+
+/* Type */
+h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(40px, 5.5vw, 64px); line-height: 1.1; letter-spacing: -0.02em; }
+h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(28px, 4vw, 42px); line-height: 1.2; }
+h3 { font-size: 18px; font-weight: 600; }
+.meta { font-family: var(--mono); font-size: 13px; opacity: .55; letter-spacing: .05em; }
+
+/* Article pages */
+.article { max-width: 760px; margin: 0 auto; padding: 32px 24px 80px; }
+.article h1 { font-size: clamp(32px, 4.5vw, 48px); margin: 28px 0 8px; font-family: var(--serif); font-weight: 500; letter-spacing: -0.01em; }
+.article h2 { font-size: 24px; font-family: var(--serif); font-weight: 500; margin: 40px 0 16px; color: var(--river); }
+.article h3 { font-size: 18px; font-weight: 600; margin: 28px 0 12px; }
+.article p, .article li { opacity: .8; line-height: 1.75; }
+
+/* Contact methods */
+.contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin: 40px 0; }
+.contact-card { background: #fff; border: 1px solid var(--mist); border-radius: 16px; padding: 28px; transition: all .2s; box-shadow: 0 1px 3px rgba(28,35,33,.08); }
+.contact-card:hover { box-shadow: 0 6px 16px rgba(28,35,33,.12); transform: translateY(-4px); }
+.contact-card h3 { margin-top: 0; color: var(--river); }
+.contact-card p { opacity: .75; margin: 12px 0 0; }
+.contact-card a { display: inline-block; margin-top: 16px; font-weight: 500; }
+
+/* Form styles */
+.form-group { margin: 24px 0; }
+label { display: block; margin-bottom: 8px; font-weight: 500; color: var(--ink); }
+input, textarea, select { width: 100%; padding: 12px; font-family: var(--sans); font-size: 15px; border: 1.5px solid var(--mist); border-radius: 12px; background: #fff; color: var(--ink); transition: all .2s; }
+input:focus, textarea:focus, select:focus { outline: none; border-color: var(--river); box-shadow: 0 0 0 3px rgba(46,110,101,.1); }
+textarea { resize: vertical; min-height: 140px; }
+
+.callout { background: linear-gradient(135deg, rgba(46,110,101,.08), rgba(46,110,101,.03)); border: 1.5px solid var(--river); border-radius: 16px; padding: 24px; margin: 28px 0; }
+.callout strong { color: var(--river); }
+
+/* Footer */
+footer.site { border-top: 1px solid var(--mist); padding: 48px 0 56px; margin-top: 60px; }
+footer.site .cols { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 32px; }
+footer.site a { color: var(--ink); opacity: .65; text-decoration: none; display: block; margin: 6px 0; font-size: 14.5px; transition: opacity .2s; }
+footer.site a:hover { opacity: 1; }
+footer.site .head { font-family: var(--mono); font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; opacity: .5; margin-bottom: 12px; }
+
+@media (max-width: 860px) {
+  .navlinks a.hideMobile { display: none; }
+  .contact-grid { grid-template-columns: 1fr; }
+  footer.site .cols { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .wrap { padding: 0 16px; }
+}
+</style>
+</head>
+<body>
+<header class="site">
+<div class="wrap">
+<div class="navbar">
+  <a class="mark" href="index.html">
+    <img src="logo.png" alt="KaviNote lotus logo" width="46" height="46">
+    KaviNote
+  </a>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false" id="hamburgerBtn">
+    <svg id="iconOpen" viewBox="0 0 24 24" fill="none" stroke="#1C2321" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    <svg id="iconClose" viewBox="0 0 24 24" fill="none" stroke="#1C2321" stroke-width="2" stroke-linecap="round" style="display:none;"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <nav class="menu" id="menu">
+    <a class="navlink" href="index.html#how">How it works</a>
+    <a class="navlink" href="index.html#features">Features</a>
+    <a class="navlink" href="index.html#pricing">Pricing</a>
+    <a class="navlink" href="help.html">Help</a>
+    <a class="navlink" href="support.html">Support</a>
+    <div class="menu-actions">
+      <a class="btn" href="index.html#download">Get the app</a>
+    </div>
+  </nav>
+</div>
+</div>
+</header>
+
+<div class="article">
+<h1>Contact Support</h1>
+<p class="meta" style="margin-bottom:32px;">We're here to help. Reach out with questions, bug reports, or feedback.</p>
+
+<div class="contact-grid">
+  <div class="contact-card">
+    <h3>Email Support</h3>
+    <p>Got a question or ran into a problem? Send us an email and we'll get back to you within 24 hours.</p>
+    <a href="mailto:support@kavinote.app">📧 support@kavinote.app</a>
+  </div>
+  <div class="contact-card">
+    <h3>Report a Bug</h3>
+    <p>Found something that isn't working right? Let us know the steps to reproduce it and we'll investigate.</p>
+    <a href="mailto:bugs@kavinote.app">🐛 bugs@kavinote.app</a>
+  </div>
+  <div class="contact-card">
+    <h3>Feature Requests</h3>
+    <p>Have an idea for how to make KaviNote better? We'd love to hear it—submit your feature request.</p>
+    <a href="mailto:ideas@kavinote.app">💡 ideas@kavinote.app</a>
+  </div>
+</div>
+
+<h2>Send us a message</h2>
+<form style="max-width: 100%;">
+  <div class="form-group">
+    <label for="name">Your name</label>
+    <input type="text" id="name" name="name" placeholder="Jane Smith" required>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email address</label>
+    <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+  </div>
+
+  <div class="form-group">
+    <label for="subject">Subject</label>
+    <select id="subject" name="subject" required>
+      <option value="">Choose a category...</option>
+      <option value="bug">Bug report</option>
+      <option value="feature">Feature request</option>
+      <option value="accuracy">Matching accuracy</option>
+      <option value="permission">Permission issue</option>
+      <option value="subscription">Subscription question</option>
+      <option value="other">Other</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="message">Message</label>
+    <textarea id="message" name="message" placeholder="Tell us what's on your mind..." required></textarea>
+  </div>
+
+  <button type="submit" class="btn" style="width: 100%;">Send message</button>
+</form>
+
+<div class="callout" style="margin-top: 40px;">
+  <strong>Response time:</strong> We typically respond to support emails within 24 hours on weekdays. Bug reports are prioritized and fixed as quickly as possible.
+</div>
+
+<h2 style="margin-top: 48px;">Common issues</h2>
+
+<h3>Not receiving email confirmations</h3>
+<p>Check your spam folder — support emails sometimes land there. Add support@kavinote.app to your contacts to prevent this.</p>
+
+<h3>Subscription issues</h3>
+<p>If you were charged but don't see Pro unlocked, go to Settings → [Your Name] → Subscriptions → KaviNote and check the status. If it shows "Pending," Apple's servers may be syncing — wait a few minutes and restart the app. If the issue persists, reach out to support.</p>
+
+<h3>Lost or forgotten notes</h3>
+<p>KaviNote stores everything locally on your device. If you haven't enabled iCloud sync, notes aren't backed up in the cloud. Going forward, enable iCloud sync in Settings → KaviNote → iCloud Sync to protect your data.</p>
+
+<h3>Performance or battery drain</h3>
+<p>If the app is slow or draining battery, try: (1) restart the app; (2) close other background apps; (3) disable iCloud sync temporarily and re-enable it; (4) restart your phone. If the problem continues, email bugs@kavinote.app with details about what you were doing.</p>
+
+<h2 style="margin-top: 48px;">FAQs</h2>
+<p><strong>How do I delete my data?</strong> All your data lives on your device or your private iCloud. To delete it: delete the notes in the app, then go to Settings → iPhone Storage → KaviNote → Offload App (or Delete App). Your data is gone permanently.</p>
+
+<p style="margin-top: 16px;"><strong>Can I export my notes?</strong> Not yet, but it's on our roadmap. For now, you can copy-paste notes into email or notes apps.</p>
+
+<p style="margin-top: 16px;"><strong>Do you have a public roadmap?</strong> We share updates in our help center and on the app's TestFlight beta. Sign up for beta access by visiting the App Store page and tapping "TestFlight".</p>
+
+<p style="margin-top: 16px;"><strong>Is KaviNote available on Android?</strong> Not yet. We're iOS-first for now, focused on making the experience amazing on iPhone. Android is under consideration for the future.</p>
+
+</div>
+
+<div class="wrap">
+<footer class="site">
+  <div class="cols">
+    <div>
+      <a class="mark" href="index.html" style="margin-bottom:14px;">
+        <img src="logo.png" alt="KaviNote lotus logo" width="40" height="40" style="width:40px; height:40px;">
+        KaviNote
+      </a>
+      <p style="font-size:14px; opacity:.6; max-width:32ch; line-height:1.6;">Notes that move with your voice. On-device, private, yours.</p>
+      <p style="font-size:13px; opacity:.45; margin-top:16px;">Built by <strong>Kavivas Tech Pvt Ltd</strong>, India</p>
+      <p style="font-size:12px; opacity:.35; margin-top:8px;">© 2026 KaviNote. All rights reserved.</p>
+    </div>
+    <div>
+      <div class="head">Product</div>
+      <a href="index.html#features">Features</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="help.html">Help center</a>
+      <a href="#">Support</a>
+    </div>
+    <div>
+      <div class="head">Legal</div>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </div>
+  </div>
+</footer>
+</div>
+<script>
+function toggleMenu() {
+  var menu = document.getElementById('menu');
+  var open = menu.classList.toggle('open');
+  document.getElementById('iconOpen').style.display = open ? 'none' : 'block';
+  document.getElementById('iconClose').style.display = open ? 'block' : 'none';
+  document.getElementById('hamburgerBtn').setAttribute('aria-expanded', open);
+}
+</script>
+</body>
+</html>
