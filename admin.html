@@ -115,7 +115,7 @@ function load(key, onFail) {
       } else if (res.status === 401) {
         onFail('Wrong admin key.');
       } else if (res.status === 503) {
-        onFail('Storage is not configured on the server yet.');
+        onFail(res.data.error || 'Storage is not configured on the server yet.');
       } else {
         onFail('Something went wrong (' + res.status + ').');
       }
