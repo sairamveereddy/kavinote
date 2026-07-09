@@ -736,8 +736,13 @@ function submitWaitlist(e) {
       document.getElementById('waitlistForm').style.display = 'none';
       document.getElementById('waitlistSuccess').style.display = 'block';
       document.getElementById('waitlistEmail').value = '';
+    } else {
+      throw new Error('waitlist failed');
     }
-  }).catch(err => console.error('Error:', err));
+  }).catch(function() {
+    // No backend on static hosting yet — fall back to email signup
+    window.location.href = 'mailto:hello@kavinote.app?subject=KaviNote%20waitlist&body=Please%20add%20' + encodeURIComponent(email) + '%20to%20the%20KaviNote%20waitlist.';
+  });
 }
 document.addEventListener('DOMContentLoaded', function() {
   var modal = document.getElementById('waitlistModal');
